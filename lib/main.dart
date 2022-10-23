@@ -1,7 +1,7 @@
+import 'package:amazon_clone_f/common/widgets/bottom_bar.dart';
 import 'package:amazon_clone_f/constants/global_variables.dart';
 import 'package:amazon_clone_f/features/auth/screens/auth_screen.dart';
 import 'package:amazon_clone_f/features/auth/services/auth_service.dart';
-import 'package:amazon_clone_f/features/home/screens/home_screen.dart';
 import 'package:amazon_clone_f/providers/user_provider.dart';
 import 'package:amazon_clone_f/router.dart';
 import 'package:flutter/material.dart';
@@ -35,17 +35,20 @@ class _MyAppState extends State<MyApp> {
       title: 'Amazon Clone',
       theme: ThemeData(
           scaffoldBackgroundColor: GlobalVariables.backgroundColor,
-          colorScheme:
-              const ColorScheme.light(primary: GlobalVariables.secondaryColor),
+          colorScheme: const ColorScheme.light(primary: Colors.white),
           appBarTheme: const AppBarTheme(
               systemOverlayStyle: SystemUiOverlayStyle(
-                // Navigation bar
-                statusBarColor: GlobalVariables.secondaryColor, // Status bar
-              ),
+                  // Navigation bar
+                  statusBarColor: Color.fromARGB(255, 114, 233, 207)
+                  //statusBarColor: GlobalVariables.secondaryColor,
+
+                  ),
               elevation: 0,
               iconTheme: IconThemeData(color: Colors.black))),
       onGenerateRoute: (settings) => generateRoute(settings),
-      home: Provider.of<UserProvider>(context).user.token.isNotEmpty ? const HomeScreen() : const AuthScreen(),
+      home: Provider.of<UserProvider>(context).user.token.isNotEmpty
+          ? const BottomBar()
+          : const AuthScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
